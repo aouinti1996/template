@@ -1,0 +1,134 @@
+<div class="content-wrapper container-xxl p-0">
+  <div class="content-body">
+    <!-- users edit start -->
+    <section class="app-user-edit">
+      <div class="card">
+        <div class="card-body">
+          <ul ngbNav #nav="ngbNav" class="nav nav-pills">
+            <li ngbNavItem>
+              <a ngbNavLink class="d-flex align-items-center"
+                ><i data-feather="user" class="mr-sm-50"></i><span class="d-none d-sm-block">Account</span></a
+              >
+              <br>
+              <div><h3>User Id : {{currentRow.id}} </h3></div>
+
+              <ng-template ngbNavContent>
+                <!-- Account Tab starts -->
+                <div class="tab-pane active" id="account" aria-labelledby="account-tab" role="tabpanel">
+                  <!-- users edit media object start -->
+
+                  <!-- users edit media object ends -->
+                  <!-- users edit account form start -->
+                  <form [formGroup]="formValue" class="form-validate" (ngSubmit)="(accountForm.form.valid)" #accountForm="ngForm">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="username">Username</label>
+                          <input
+                            type="text"
+                            formControlName="username"
+                            id="username"
+                            class="form-control"
+                            placeholder="{{currentRow.username}}"
+                            name="username"
+                            >
+
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="name">Name</label>
+                          <input
+                            type="text"
+                            formControlName="fullname"
+                            id="name"
+                            class="form-control"
+                            placeholder="{{currentRow.fullname}}"
+                            name="fullName"
+
+                          />
+
+
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="email">E-mail</label>
+                          <input
+                            type="email"
+                            formControlName="email"
+                            id="email"
+                            class="form-control"
+                            placeholder="{{currentRow.email}}"
+                            name="email"
+
+                          />
+
+                        </div>
+                      </div>
+
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="company">Phone</label>
+
+                          <input
+                                  type="number"
+                                  formControlName="phone"
+                                  class="form-control"
+                                  placeholder="{{currentRow.phone}}"
+                                  id="company"
+                                  name="company"
+                                  required
+
+                          />
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="role">Current Role: {{tempRow.role}}</label>
+                          <select class="form-control"  name="role" id="role" formControlName="role">
+                            <option>Maintainer</option>
+                            <option>Subscriber</option>
+                            <option>Author</option>
+                            <option>Editor</option>
+                            <option>Admin</option>
+                          </select>
+                        </div>
+                      </div>
+
+
+                      <div class="col-12 d-flex flex-sm-row flex-column mt-2">
+                        <button
+                          type="submit"
+                          (click)="submit()"
+                          class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1"
+                          rippleEffect
+                        >
+                          Save Changes
+                        </button>
+                        <button routerLink="/apps/user/user-list"  class="btn btn-outline-secondary" rippleEffect>
+                          List
+                        </button>
+                        <div>
+                        <a href="javascript:;" ngbDropdownItem (click)="deleteUserDetail()"
+                        ><span [data-feather]="'trash'" [size]="16" [class]="'mr-50'"></span> Delete</a
+                        >
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                  <!-- users edit account form ends -->
+                </div>
+                <!-- Account Tab ends -->
+              </ng-template>
+            </li>
+
+
+          </ul>
+          <div [ngbNavOutlet]="nav" class="mt-2"></div>
+        </div>
+      </div>
+    </section>
+    <!-- users edit ends -->
+  </div>
+</div>
